@@ -3,14 +3,20 @@ package myprojects.automation.assignment4;
 import myprojects.automation.assignment4.utils.logging.EventHandler;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 
 import java.net.URISyntaxException;
 import java.nio.file.Paths;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -68,9 +74,10 @@ public abstract class BaseTest {
      * creates {@link ChromeDriver} instance by default.
      *
      */
+    @Parameters({"selenium.browser"})
     @BeforeClass
     // TODO use parameters from pom.xml to pass required browser type
-    public void setUp(String browser ) {
+    public void setUp(@Optional("firefox") String browser ) {
         driver = new EventFiringWebDriver(getDriver(browser));
         driver.register(new EventHandler());
 

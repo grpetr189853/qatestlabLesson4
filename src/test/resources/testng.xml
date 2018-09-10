@@ -1,10 +1,28 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="Products Management" verbose="1" >
+    <!--configure test to execute testing script using Chrome browser-->
     <test name="Create New Product [Chrome]" >
-        <!--configure test to execute testing script using Chrome browser-->
+        <parameter name="selenium.browser" value="Chrome"/>
+        <packages>
+            <package name="myprojects.automation.assignment4.*"/>
+        </packages>
+        <!--configure test to execute testing script using Firefox browser-->
+    </test>
+    <test name="Create New Product [Firefox]" >
+        <parameter name="selenium.browser" value="firefox"/>
+        <packages>
+            <package name="myprojects.automation.assignment4.*"/>
+        </packages>
+        <!--configure test to execute testing script using Internet Explorer browser-->
+    </test>
+    <test name="Create New Product [Internet Explorer]" >
+        <parameter name="selenium.browser" value="ie"/>
+        <packages>
+            <package name="myprojects.automation.assignment4.*"/>
+        </packages>
+
     </test>
 
-    <!--Prepare test for firefox and IE browsers-->
 
 </suite>
